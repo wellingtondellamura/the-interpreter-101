@@ -1,0 +1,10 @@
+x = 10;
+y = 11;
+z = x * (y + 2);
+if (z > y) then {
+    write "O valor de Z é: ";
+    write z;
+} else {
+    write "A variável Y tem o valor: ";
+    write y;
+}
