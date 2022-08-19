@@ -33,82 +33,200 @@ using IToken = Antlr4.Runtime.IToken;
 [System.CLSCompliant(false)]
 public interface ILangVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="LangParser.prog"/>.
+	/// Visit a parse tree produced by the <c>progLine</c>
+	/// labeled alternative in <see cref="LangParser.prog"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitProg([NotNull] LangParser.ProgContext context);
+	Result VisitProgLine([NotNull] LangParser.ProgLineContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="LangParser.line"/>.
+	/// Visit a parse tree produced by the <c>lineStmt</c>
+	/// labeled alternative in <see cref="LangParser.line"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitLine([NotNull] LangParser.LineContext context);
+	Result VisitLineStmt([NotNull] LangParser.LineStmtContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="LangParser.stmt"/>.
+	/// Visit a parse tree produced by the <c>lineIf</c>
+	/// labeled alternative in <see cref="LangParser.line"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitStmt([NotNull] LangParser.StmtContext context);
+	Result VisitLineIf([NotNull] LangParser.LineIfContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="LangParser.input"/>.
+	/// Visit a parse tree produced by the <c>lineEOL</c>
+	/// labeled alternative in <see cref="LangParser.line"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitInput([NotNull] LangParser.InputContext context);
+	Result VisitLineEOL([NotNull] LangParser.LineEOLContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="LangParser.output"/>.
+	/// Visit a parse tree produced by the <c>stmtAtrib</c>
+	/// labeled alternative in <see cref="LangParser.stmt"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitOutput([NotNull] LangParser.OutputContext context);
+	Result VisitStmtAtrib([NotNull] LangParser.StmtAtribContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="LangParser.ifst"/>.
+	/// Visit a parse tree produced by the <c>stmtInput</c>
+	/// labeled alternative in <see cref="LangParser.stmt"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitIfst([NotNull] LangParser.IfstContext context);
+	Result VisitStmtInput([NotNull] LangParser.StmtInputContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="LangParser.block"/>.
+	/// Visit a parse tree produced by the <c>stmtOutput</c>
+	/// labeled alternative in <see cref="LangParser.stmt"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitBlock([NotNull] LangParser.BlockContext context);
+	Result VisitStmtOutput([NotNull] LangParser.StmtOutputContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="LangParser.cond"/>.
+	/// Visit a parse tree produced by the <c>inputRead</c>
+	/// labeled alternative in <see cref="LangParser.input"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitCond([NotNull] LangParser.CondContext context);
+	Result VisitInputRead([NotNull] LangParser.InputReadContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="LangParser.relop"/>.
+	/// Visit a parse tree produced by the <c>outputWrite</c>
+	/// labeled alternative in <see cref="LangParser.output"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitRelop([NotNull] LangParser.RelopContext context);
+	Result VisitOutputWrite([NotNull] LangParser.OutputWriteContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="LangParser.atrib"/>.
+	/// Visit a parse tree produced by the <c>outputWriteStr</c>
+	/// labeled alternative in <see cref="LangParser.output"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitAtrib([NotNull] LangParser.AtribContext context);
+	Result VisitOutputWriteStr([NotNull] LangParser.OutputWriteStrContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="LangParser.expr"/>.
+	/// Visit a parse tree produced by the <c>outputWriteExpr</c>
+	/// labeled alternative in <see cref="LangParser.output"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitExpr([NotNull] LangParser.ExprContext context);
+	Result VisitOutputWriteExpr([NotNull] LangParser.OutputWriteExprContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="LangParser.term"/>.
+	/// Visit a parse tree produced by the <c>ifstIf</c>
+	/// labeled alternative in <see cref="LangParser.ifst"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitTerm([NotNull] LangParser.TermContext context);
+	Result VisitIfstIf([NotNull] LangParser.IfstIfContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="LangParser.factor"/>.
+	/// Visit a parse tree produced by the <c>ifstIfElse</c>
+	/// labeled alternative in <see cref="LangParser.ifst"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitFactor([NotNull] LangParser.FactorContext context);
+	Result VisitIfstIfElse([NotNull] LangParser.IfstIfElseContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>blockLine</c>
+	/// labeled alternative in <see cref="LangParser.block"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitBlockLine([NotNull] LangParser.BlockLineContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>condRelop</c>
+	/// labeled alternative in <see cref="LangParser.cond"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitCondRelop([NotNull] LangParser.CondRelopContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>condExpr</c>
+	/// labeled alternative in <see cref="LangParser.cond"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitCondExpr([NotNull] LangParser.CondExprContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>condAnd</c>
+	/// labeled alternative in <see cref="LangParser.cond"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitCondAnd([NotNull] LangParser.CondAndContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>condOr</c>
+	/// labeled alternative in <see cref="LangParser.cond"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitCondOr([NotNull] LangParser.CondOrContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>atribVar</c>
+	/// labeled alternative in <see cref="LangParser.atrib"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitAtribVar([NotNull] LangParser.AtribVarContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>exprPlus</c>
+	/// labeled alternative in <see cref="LangParser.expr"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitExprPlus([NotNull] LangParser.ExprPlusContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>exprMinus</c>
+	/// labeled alternative in <see cref="LangParser.expr"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitExprMinus([NotNull] LangParser.ExprMinusContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>exprTerm</c>
+	/// labeled alternative in <see cref="LangParser.expr"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitExprTerm([NotNull] LangParser.ExprTermContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>termMult</c>
+	/// labeled alternative in <see cref="LangParser.term"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitTermMult([NotNull] LangParser.TermMultContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>termDiv</c>
+	/// labeled alternative in <see cref="LangParser.term"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitTermDiv([NotNull] LangParser.TermDivContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>termFactor</c>
+	/// labeled alternative in <see cref="LangParser.term"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitTermFactor([NotNull] LangParser.TermFactorContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>factorExpr</c>
+	/// labeled alternative in <see cref="LangParser.factor"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitFactorExpr([NotNull] LangParser.FactorExprContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>factorVar</c>
+	/// labeled alternative in <see cref="LangParser.factor"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitFactorVar([NotNull] LangParser.FactorVarContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>factorNum</c>
+	/// labeled alternative in <see cref="LangParser.factor"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitFactorNum([NotNull] LangParser.FactorNumContext context);
 }
 } // namespace Grammar

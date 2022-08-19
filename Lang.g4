@@ -1,67 +1,83 @@
 grammar Lang;
 
-prog: line+;
-
-line:
-	stmt EOL
-	| ifst
-	//| whilest | forst
-	| EOL
+prog: line+             # progLine
     ;
 
-stmt: atrib | input | output;
+line:
+	  stmt EOL          # lineStmt
+	| ifst              # lineIf
+	//| whilest         # lineWhile
+    //| forst           # lineFor
+	| EOL              # lineEOL
+    ;
 
-input: READ VAR;
+stmt: 
+      atrib             # stmtAtrib
+    | input             # stmtInput
+    | output            # stmtOutput
+    ;
 
-output: WRITE VAR | WRITE STR | WRITE expr;
+input: 
+    READ VAR            # inputRead
+    ;    
+
+output: 
+    WRITE VAR           # outputWrite
+    | WRITE STR         # outputWriteStr
+    | WRITE expr        # outputWriteExpr
+    ;
 
 ifst:
-	IF '(' cond ')' THEN block
-	| IF '(' cond ')' THEN block ELSE block;
-
-block: '{' line+ '}';
-
-cond: expr | expr relop expr | cond AND cond | cond OR cond;
-
-relop: RELOP_EQ
-	 | RELOP_NE
-     | RELOP_LT
-     | RELOP_LE
-     | RELOP_GT
-     | RELOP_GE;
+	  IF '(' cond ')' THEN block            # ifstIf
+	| IF '(' cond ')' THEN block ELSE block # ifstIfElse
+    ;
  
-atrib: VAR '=' expr;
+block:
+     '{' line+ '}'       # blockLine
+    ;
 
-expr: term '+' expr 
-    | term '-' expr 
-    | term;
+cond: 
+      expr                  # condExpr
+    | expr RELOP expr       # condRelop
+    | cond AND cond         # condAnd
+    | cond OR cond          # condOr
+    ;
 
-term: factor '*' term
-    | factor '/' term
-    | factor;
+atrib: 
+     VAR '=' expr            # atribVar
+    ;
 
-factor: '(' expr ')'
-      | VAR
-      | NUM
-      ;
+expr: 
+      term '+' expr         # exprPlus
+    | term '-' expr         # exprMinus
+    | term                  # exprTerm
+    ;
 
+term: 
+      factor '*' term       # termMult
+    | factor '/' term       # termDiv
+    | factor                # termFactor
+    ;           
+
+factor: 
+     '(' expr ')'           # factorExpr
+    | VAR                   # factorVar
+    | NUM                   # factorNum
+    ;
+
+// Lexical rules
 OE: '(';
 CE: ')';
 OB: '{';
 CB: '}';
 EQ: '=';
-SUM: '+';
-SUB: '-';
-MUL: '*';
+PLUS: '+';
+MINUS: '-';
+MULT: '*';
 DIV: '/';
 AND: '&&';
 OR: '||';
-RELOP_EQ: '==';
-RELOP_NE: '!=';
-RELOP_LT: '<';
-RELOP_LE: '<=';
-RELOP_GT: '>';
-RELOP_GE: '>=';
+RELOP: '=='|'!='|'<'|'<='|'>'|'>=';
 BOOL_TRUE: 'true';
 BOL_FALSE: 'false';
 IF: [iI][fF];
