@@ -20,9 +20,9 @@ stmt:
 input: 
     READ VAR            # inputRead
     ;    
-
+ 
 output: 
-    WRITE VAR           # outputWrite
+    WRITE VAR           # outputWriteVar
     | WRITE STR         # outputWriteStr
     | WRITE expr        # outputWriteExpr
     ;

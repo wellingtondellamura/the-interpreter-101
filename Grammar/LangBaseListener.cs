@@ -149,19 +149,19 @@ public partial class LangBaseListener : ILangListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitInputRead([NotNull] LangParser.InputReadContext context) { }
 	/// <summary>
-	/// Enter a parse tree produced by the <c>outputWrite</c>
+	/// Enter a parse tree produced by the <c>outputWriteVar</c>
 	/// labeled alternative in <see cref="LangParser.output"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterOutputWrite([NotNull] LangParser.OutputWriteContext context) { }
+	public virtual void EnterOutputWriteVar([NotNull] LangParser.OutputWriteVarContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by the <c>outputWrite</c>
+	/// Exit a parse tree produced by the <c>outputWriteVar</c>
 	/// labeled alternative in <see cref="LangParser.output"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitOutputWrite([NotNull] LangParser.OutputWriteContext context) { }
+	public virtual void ExitOutputWriteVar([NotNull] LangParser.OutputWriteVarContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>outputWriteStr</c>
 	/// labeled alternative in <see cref="LangParser.output"/>.

@@ -1,4 +1,5 @@
 ﻿using Antlr4.Runtime;
+using Antlr4.Runtime.Tree;
 using Grammar;
 using Interpreter.Lang;
 
@@ -8,7 +9,7 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        var inputStream = new AntlrInputStream("input.lang");
+        var inputStream = new AntlrFileStream("input.lang");
         //### lexer
         var lexer = new LangLexer(inputStream);
 
@@ -20,12 +21,12 @@ internal class Program
 
         //### error listener
         var errorListener = new LangErrorListener();
-        parser.ErrorListeners.Clear();
+        parser.RemoveErrorListeners();
         parser.AddErrorListener(errorListener);
 
         //### semantic listener
         var semanticListener = new SemanticLangListener();
-        parser.ParseListeners.Clear();
+        parser.RemoveParseListeners();
         parser.AddParseListener(semanticListener);
 
         //### error handling
@@ -33,6 +34,22 @@ internal class Program
         parser.ErrorHandler = new DefaultErrorStrategy();
 
         //### parse
-        var tree = parser.prog();
+        IParseTree? tree = null;
+        try
+        {
+            tree = parser.prog();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
+
+        //### execute
+        if (tree != null)
+        {
+            var interpreter = new LangInterpreter();
+            interpreter.Visit(tree);
+        }
+
     }
 }

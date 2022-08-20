@@ -89,12 +89,12 @@ public interface ILangVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitInputRead([NotNull] LangParser.InputReadContext context);
 	/// <summary>
-	/// Visit a parse tree produced by the <c>outputWrite</c>
+	/// Visit a parse tree produced by the <c>outputWriteVar</c>
 	/// labeled alternative in <see cref="LangParser.output"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitOutputWrite([NotNull] LangParser.OutputWriteContext context);
+	Result VisitOutputWriteVar([NotNull] LangParser.OutputWriteVarContext context);
 	/// <summary>
 	/// Visit a parse tree produced by the <c>outputWriteStr</c>
 	/// labeled alternative in <see cref="LangParser.output"/>.

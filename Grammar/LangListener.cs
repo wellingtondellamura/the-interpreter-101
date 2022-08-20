@@ -128,17 +128,17 @@ public interface ILangListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitInputRead([NotNull] LangParser.InputReadContext context);
 	/// <summary>
-	/// Enter a parse tree produced by the <c>outputWrite</c>
+	/// Enter a parse tree produced by the <c>outputWriteVar</c>
 	/// labeled alternative in <see cref="LangParser.output"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterOutputWrite([NotNull] LangParser.OutputWriteContext context);
+	void EnterOutputWriteVar([NotNull] LangParser.OutputWriteVarContext context);
 	/// <summary>
-	/// Exit a parse tree produced by the <c>outputWrite</c>
+	/// Exit a parse tree produced by the <c>outputWriteVar</c>
 	/// labeled alternative in <see cref="LangParser.output"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitOutputWrite([NotNull] LangParser.OutputWriteContext context);
+	void ExitOutputWriteVar([NotNull] LangParser.OutputWriteVarContext context);
 	/// <summary>
 	/// Enter a parse tree produced by the <c>outputWriteStr</c>
 	/// labeled alternative in <see cref="LangParser.output"/>.

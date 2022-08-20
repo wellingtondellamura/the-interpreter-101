@@ -124,7 +124,7 @@ public partial class LangBaseVisitor<Result> : AbstractParseTreeVisitor<Result>,
 	/// <return>The visitor result.</return>
 	public virtual Result VisitInputRead([NotNull] LangParser.InputReadContext context) { return VisitChildren(context); }
 	/// <summary>
-	/// Visit a parse tree produced by the <c>outputWrite</c>
+	/// Visit a parse tree produced by the <c>outputWriteVar</c>
 	/// labeled alternative in <see cref="LangParser.output"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
@@ -133,7 +133,7 @@ public partial class LangBaseVisitor<Result> : AbstractParseTreeVisitor<Result>,
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitOutputWrite([NotNull] LangParser.OutputWriteContext context) { return VisitChildren(context); }
+	public virtual Result VisitOutputWriteVar([NotNull] LangParser.OutputWriteVarContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by the <c>outputWriteStr</c>
 	/// labeled alternative in <see cref="LangParser.output"/>.
