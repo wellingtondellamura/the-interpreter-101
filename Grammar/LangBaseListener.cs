@@ -289,6 +289,20 @@ public partial class LangBaseListener : ILangListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitCondOr([NotNull] LangParser.CondOrContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by the <c>condNot</c>
+	/// labeled alternative in <see cref="LangParser.cond"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterCondNot([NotNull] LangParser.CondNotContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>condNot</c>
+	/// labeled alternative in <see cref="LangParser.cond"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitCondNot([NotNull] LangParser.CondNotContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by the <c>atribVar</c>
 	/// labeled alternative in <see cref="LangParser.atrib"/>.
 	/// <para>The default implementation does nothing.</para>

@@ -159,6 +159,13 @@ public interface ILangVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitCondOr([NotNull] LangParser.CondOrContext context);
 	/// <summary>
+	/// Visit a parse tree produced by the <c>condNot</c>
+	/// labeled alternative in <see cref="LangParser.cond"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitCondNot([NotNull] LangParser.CondNotContext context);
+	/// <summary>
 	/// Visit a parse tree produced by the <c>atribVar</c>
 	/// labeled alternative in <see cref="LangParser.atrib"/>.
 	/// </summary>

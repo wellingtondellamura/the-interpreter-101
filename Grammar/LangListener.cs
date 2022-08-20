@@ -248,6 +248,18 @@ public interface ILangListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitCondOr([NotNull] LangParser.CondOrContext context);
 	/// <summary>
+	/// Enter a parse tree produced by the <c>condNot</c>
+	/// labeled alternative in <see cref="LangParser.cond"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterCondNot([NotNull] LangParser.CondNotContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>condNot</c>
+	/// labeled alternative in <see cref="LangParser.cond"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitCondNot([NotNull] LangParser.CondNotContext context);
+	/// <summary>
 	/// Enter a parse tree produced by the <c>atribVar</c>
 	/// labeled alternative in <see cref="LangParser.atrib"/>.
 	/// </summary>

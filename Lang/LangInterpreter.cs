@@ -122,6 +122,72 @@ namespace Interpreter.Lang
         }
         #endregion
 
+        #region Control Statements
+        public override object? VisitIfstIf([NotNull] LangParser.IfstIfContext context)
+        {
+            var cond = Visit(context.cond());
+            if (cond != null && (bool)cond)
+                Visit(context.block());
+            return null;
+        }
+
+        public override object? VisitIfstIfElse([NotNull] LangParser.IfstIfElseContext context)
+        {
+            var cond = Visit(context.cond());
+            if (cond != null && (bool)cond)
+                Visit(context.b1);
+            else
+                Visit(context.b2);
+            return null;
+        }
+
+        public override object? VisitCondExpr([NotNull] LangParser.CondExprContext context)
+        {
+            object? v = Visit(context.expr()); 
+            return v != null && (Double)v != 0;
+        }
+
+        public override object? VisitCondRelop([NotNull] LangParser.CondRelopContext context)
+        {
+            var d = GetDoubles(context.e1, context.e2);
+            switch (context.RELOP.Type)
+            {
+                case LangLexer.EQ:
+                    return d.Item1 == d.Item2;
+                case LangLexer.NE:
+                    return d.Item1 != d.Item2;
+                case LangLexer.LT:
+                    return d.Item1 < d.Item2;
+                case LangLexer.LE:
+                    return d.Item1 <= d.Item2;
+                case LangLexer.GT:
+                    return d.Item1 > d.Item2;
+                case LangLexer.GE:
+                    return d.Item1 >= d.Item2;
+            }
+            return null;
+        }
+
+        public override object? VisitCondAnd([NotNull] LangParser.CondAndContext context)
+        {
+            object? v1 = Visit(context.c1);
+            object? v2 = Visit(context.c2);
+            return v1 != null && v2 != null && (bool)v1 && (bool)v2;
+        }
+
+        public override object? VisitCondOr([NotNull] LangParser.CondOrContext context)
+        {
+            object? v1 = Visit(context.c1);
+            object? v2 = Visit(context.c2);
+            return v1 != null && (bool)v1 || v2 != null && (bool)v2;
+        }
+
+        public override object? VisitCondNot([NotNull] LangParser.CondNotContext context)
+        {
+            object? v = Visit(context.cond());
+            return v != null && !(bool)v;
+        }
+        #endregion
 
     }
 }

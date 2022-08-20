@@ -28,19 +28,20 @@ output:
     ;
 
 ifst:
-	  IF '(' cond ')' THEN block            # ifstIf
-	| IF '(' cond ')' THEN block ELSE block # ifstIfElse
+	  IF '(' cond ')' THEN block                  # ifstIf
+	| IF '(' cond ')' THEN b1=block ELSE b2=block # ifstIfElse
     ;
  
 block:
-     '{' line+ '}'       # blockLine
+     '{' line+ '}'                # blockLine
     ;
 
 cond: 
-      expr                  # condExpr
-    | expr RELOP expr       # condRelop
-    | cond AND cond         # condAnd
-    | cond OR cond          # condOr
+      expr                        # condExpr
+    | e1=expr RELOP=(EQ|NE|LT|GT|LE|GE) e2=expr       # condRelop
+    | c1=cond AND c2=cond         # condAnd
+    | c1=cond OR c2=cond          # condOr
+    | NOT cond                    # condNot
     ;
 
 atrib: 
@@ -70,14 +71,20 @@ OE: '(';
 CE: ')';
 OB: '{';
 CB: '}';
-EQ: '=';
+AT: '=';
 PLUS: '+';
 MINUS: '-';
 MULT: '*';
 DIV: '/';
 AND: '&&';
 OR: '||';
-RELOP: '=='|'!='|'<'|'<='|'>'|'>=';
+NOT: '!';
+EQ : '==';
+LT : '<';
+GT : '>';
+LE : '<=';
+GE : '>=';
+NE : '!=';
 BOOL_TRUE: 'true';
 BOL_FALSE: 'false';
 IF: [iI][fF];

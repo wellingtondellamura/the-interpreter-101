@@ -9,11 +9,9 @@ d = x / y;
 write "A soma de x e y é: ";
 write a;
 
-// if (z > y) then {
-//    write "O valor de Z é: ";
-//    write z;
-// } else {
-//     write "A variável Y tem o valor: ";
-//     write y;
-// }
+if (a > b) then {
+    write "A é maior";
+} else {
+    write "B é maior";
+}
 //write z;
