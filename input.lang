@@ -3,15 +3,11 @@ read x;
 write "Informe y: ";
 read y;
 a = x + y;
-b = x - y;
-c = x * y;
-d = x / y;
 write "A soma de x e y é: ";
 write a;
-
-if (a > b) then {
-    write "A é maior";
+write b;
+if (x > y) then {
+    write "X é maior";
 } else {
-    write "B é maior";
+    write "Y é maior";
 }
-//write z;

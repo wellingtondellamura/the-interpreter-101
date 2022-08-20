@@ -3,13 +3,14 @@ using Antlr4.Runtime.Tree;
 using Grammar;
 using Interpreter.Lang;
 
-//LEXER
-//### input
 internal class Program
 {
     private static void Main(string[] args)
     {
-        var inputStream = new AntlrFileStream("input.lang");
+        //LEXER
+        //### input        
+        //var inputStream = new AntlrFileStream("input.lang");
+        var inputStream = new AntlrFileStream(args[0]);
         //### lexer
         var lexer = new LangLexer(inputStream);
 
@@ -23,21 +24,34 @@ internal class Program
         var errorListener = new LangErrorListener();
         parser.RemoveErrorListeners();
         parser.AddErrorListener(errorListener);
+        //### error handling
+        //parser.ErrorHandler = new BailErrorStrategy();
+        parser.ErrorHandler = new DefaultErrorStrategy();
+
 
         //### semantic listener
         var semanticListener = new SemanticLangListener();
         parser.RemoveParseListeners();
         parser.AddParseListener(semanticListener);
 
-        //### error handling
-        //parser.ErrorHandler = new BailErrorStrategy();
-        parser.ErrorHandler = new DefaultErrorStrategy();
+        
 
         //### parse
         IParseTree? tree = null;
         try
         {
             tree = parser.prog();
+            if (errorListener.HasErrors){
+                Console.WriteLine("Errors!");
+                errorListener.ErrorMessages.ForEach(e => Console.WriteLine(e));
+                tree = null;
+            }
+            if (semanticListener.HasErrors){
+                Console.WriteLine("Semantic Errors!");
+                semanticListener.ErrorMessages.ForEach(e => Console.WriteLine(e));
+                tree = null;
+            }
+            
         }
         catch (Exception e)
         {

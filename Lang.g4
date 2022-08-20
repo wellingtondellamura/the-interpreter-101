@@ -22,7 +22,7 @@ input:
     ;    
  
 output: 
-    WRITE VAR           # outputWriteVar
+      WRITE VAR           # outputWriteVar
     | WRITE STR         # outputWriteStr
     | WRITE expr        # outputWriteExpr
     ;
