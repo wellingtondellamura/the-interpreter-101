@@ -1,7 +1,31 @@
 grammar Lang;
 
-prog: line+             # progLine
+prog: functions line+             # progLine
     ;
+
+functions: function functions
+        |// empty
+        ;
+ 
+function: FUNCTION VAR '('params')' fnBlock;
+
+ 
+fnBlock:
+     '{' fnBody '}'                # fnBlockLine
+    ;
+
+fnBody:
+      line                      # fnBodyLine
+    | line fnBody               # fnBodyLineMore
+    | RETURN expr EOL           # fnReturnExprLine
+    | RETURN EOL                # fnReturnLine
+    ;
+
+params: 
+        VAR
+      | VAR SEP params
+      | // empty
+      ;
 
 line:
 	  stmt EOL          # lineStmt
@@ -72,6 +96,7 @@ CE: ')';
 OB: '{';
 CB: '}';
 AT: '=';
+SEP: ',';
 PLUS: '+';
 MINUS: '-';
 MULT: '*';
@@ -88,6 +113,8 @@ NE : '!=';
 BOOL_TRUE: 'true';
 BOL_FALSE: 'false';
 IF: [iI][fF];
+FUNCTION: [fF][uU][nN][cC][tT][iI][oO][nN];
+RETURN: [rR][eE][tT][uU][rR][nN];
 THEN: [tT][hH][eE][nN];
 ELSE: [eE][lL][sS][eE];
 WRITE: [wW][rR][iI][tT][eE];
@@ -95,6 +122,6 @@ READ: [rR][eE][aA][dD];
 STR: '"' ~["]* '"';
 EOL: ';';
 NUM: [0-9]+ (.([0-9]+))?;
-VAR: [a-zA-Z]+;
+VAR: [a-zA-Z_][a-zA-Z0-9_]*;
 COMMENT: '//' ~[\r\n]* -> skip;
 WS: [ \t\n\r]+ -> skip;

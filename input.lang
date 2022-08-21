@@ -1,3 +1,16 @@
+function soma(x,y){
+    return x+y;
+}
+
+function soma(x,y,z){
+    return x+y+z;
+}
+
+
+function hello(){
+    write "Hello World";
+}
+
 write "Informe x: ";
 read x;
 write "Informe y: ";

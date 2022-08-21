@@ -9,8 +9,8 @@ internal class Program
     {
         //LEXER
         //### input        
-        //var inputStream = new AntlrFileStream("input.lang");
-        var inputStream = new AntlrFileStream(args[0]);
+        var inputStream = new AntlrFileStream("input.lang");
+        //var inputStream = new AntlrFileStream(args[0]);
         //### lexer
         var lexer = new LangLexer(inputStream);
 
@@ -57,6 +57,9 @@ internal class Program
         {
             Console.WriteLine(e);
         }
+
+        Console.WriteLine("##### FUNCTIONS");
+        semanticListener.Functions.Keys.ToList().ForEach(f => Console.WriteLine(f));
 
         //### execute
         if (tree != null)

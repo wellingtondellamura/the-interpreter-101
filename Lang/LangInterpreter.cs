@@ -10,7 +10,7 @@ namespace Interpreter.Lang
 {
     public class LangInterpreter : LangBaseVisitor<object?>
     {
-        protected Dictionary<string, object?> variables = new Dictionary<string, object?>();
+        public Dictionary<string, object?> Variables {get; protected set;} = new Dictionary<string, object?>();
 
         #region I/O Statements
 
@@ -18,15 +18,15 @@ namespace Interpreter.Lang
         {
             var input = Console.ReadLine();
             if (!String.IsNullOrEmpty(input))
-                variables[context.VAR().GetText()] = input;
+                Variables[context.VAR().GetText()] = input;
             return null;
         }
 
         public override object? VisitOutputWriteVar([NotNull] LangParser.OutputWriteVarContext context)
         {
             var varName = context.VAR().GetText();
-            if (variables.ContainsKey(varName))
-                Console.WriteLine(variables[varName]);
+            if (Variables.ContainsKey(varName))
+                Console.WriteLine(Variables[varName]);
             else
                 Console.WriteLine("Variable " + varName + " is not defined");
             return null;
@@ -62,7 +62,7 @@ namespace Interpreter.Lang
         {
             var varName = context.VAR().GetText();
             object? v = Visit(context.expr());
-            variables[varName] = v;
+            Variables[varName] = v;
             return null;
         }
 
@@ -103,8 +103,8 @@ namespace Interpreter.Lang
         public override object? VisitFactorVar([NotNull] LangParser.FactorVarContext context)
         {
             var varName = context.VAR().GetText();
-            if (variables.ContainsKey(varName))
-                return variables[varName];
+            if (Variables.ContainsKey(varName))
+                return Variables[varName];
 
             Console.WriteLine("Variable " + varName + " is not defined");
             return null;
