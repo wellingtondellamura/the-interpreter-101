@@ -32,18 +32,18 @@ line:
 	| ifst              # lineIf
 	//| whilest         # lineWhile
     //| forst           # lineFor
-    | funcInvoc        # lineFuncInvoc
 	| EOL              # lineEOL
     ;
 
 funcInvoc:
-    VAR '(' params ')' EOL # funcInvocLine
+    VAR '(' params ')' # funcInvocLine
     ;
 
 stmt: 
       atrib             # stmtAtrib
     | input             # stmtInput
-    | output            # stmtOutput
+    | output            # stmtOutput    
+    | funcInvoc        # lineFuncInvoc
     ;
 
 input: 

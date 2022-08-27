@@ -185,20 +185,6 @@ public partial class LangBaseListener : ILangListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitLineIf([NotNull] LangParser.LineIfContext context) { }
 	/// <summary>
-	/// Enter a parse tree produced by the <c>lineFuncInvoc</c>
-	/// labeled alternative in <see cref="LangParser.line"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterLineFuncInvoc([NotNull] LangParser.LineFuncInvocContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>lineFuncInvoc</c>
-	/// labeled alternative in <see cref="LangParser.line"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitLineFuncInvoc([NotNull] LangParser.LineFuncInvocContext context) { }
-	/// <summary>
 	/// Enter a parse tree produced by the <c>lineEOL</c>
 	/// labeled alternative in <see cref="LangParser.line"/>.
 	/// <para>The default implementation does nothing.</para>
@@ -268,6 +254,20 @@ public partial class LangBaseListener : ILangListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitStmtOutput([NotNull] LangParser.StmtOutputContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by the <c>lineFuncInvoc</c>
+	/// labeled alternative in <see cref="LangParser.stmt"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterLineFuncInvoc([NotNull] LangParser.LineFuncInvocContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>lineFuncInvoc</c>
+	/// labeled alternative in <see cref="LangParser.stmt"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitLineFuncInvoc([NotNull] LangParser.LineFuncInvocContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>inputRead</c>
 	/// labeled alternative in <see cref="LangParser.input"/>.

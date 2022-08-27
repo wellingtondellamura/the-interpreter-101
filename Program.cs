@@ -58,8 +58,8 @@ internal class Program
             Console.WriteLine(e);
         }
 
-        Console.WriteLine("##### FUNCTIONS");
-        semanticListener.Functions.Keys.ToList().ForEach(f => Console.WriteLine(f));
+       // Console.WriteLine("##### FUNCTIONS");
+       // semanticListener.Functions.Keys.ToList().ForEach(f => Console.WriteLine(f));
 
         //### execute
         if (tree != null)

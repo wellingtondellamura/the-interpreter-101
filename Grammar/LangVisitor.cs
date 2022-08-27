@@ -107,13 +107,6 @@ public interface ILangVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitLineIf([NotNull] LangParser.LineIfContext context);
 	/// <summary>
-	/// Visit a parse tree produced by the <c>lineFuncInvoc</c>
-	/// labeled alternative in <see cref="LangParser.line"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitLineFuncInvoc([NotNull] LangParser.LineFuncInvocContext context);
-	/// <summary>
 	/// Visit a parse tree produced by the <c>lineEOL</c>
 	/// labeled alternative in <see cref="LangParser.line"/>.
 	/// </summary>
@@ -148,6 +141,13 @@ public interface ILangVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitStmtOutput([NotNull] LangParser.StmtOutputContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>lineFuncInvoc</c>
+	/// labeled alternative in <see cref="LangParser.stmt"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitLineFuncInvoc([NotNull] LangParser.LineFuncInvocContext context);
 	/// <summary>
 	/// Visit a parse tree produced by the <c>inputRead</c>
 	/// labeled alternative in <see cref="LangParser.input"/>.
