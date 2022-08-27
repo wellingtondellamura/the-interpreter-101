@@ -154,6 +154,17 @@ public partial class LangBaseVisitor<Result> : AbstractParseTreeVisitor<Result>,
 	/// <return>The visitor result.</return>
 	public virtual Result VisitLineIf([NotNull] LangParser.LineIfContext context) { return VisitChildren(context); }
 	/// <summary>
+	/// Visit a parse tree produced by the <c>lineFuncInvoc</c>
+	/// labeled alternative in <see cref="LangParser.line"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitLineFuncInvoc([NotNull] LangParser.LineFuncInvocContext context) { return VisitChildren(context); }
+	/// <summary>
 	/// Visit a parse tree produced by the <c>lineEOL</c>
 	/// labeled alternative in <see cref="LangParser.line"/>.
 	/// <para>
@@ -164,6 +175,17 @@ public partial class LangBaseVisitor<Result> : AbstractParseTreeVisitor<Result>,
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	public virtual Result VisitLineEOL([NotNull] LangParser.LineEOLContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by the <c>funcInvocLine</c>
+	/// labeled alternative in <see cref="LangParser.funcInvoc"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitFuncInvocLine([NotNull] LangParser.FuncInvocLineContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by the <c>stmtAtrib</c>
 	/// labeled alternative in <see cref="LangParser.stmt"/>.

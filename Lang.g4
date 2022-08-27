@@ -32,7 +32,12 @@ line:
 	| ifst              # lineIf
 	//| whilest         # lineWhile
     //| forst           # lineFor
+    | funcInvoc        # lineFuncInvoc
 	| EOL              # lineEOL
+    ;
+
+funcInvoc:
+    VAR '(' params ')' EOL # funcInvocLine
     ;
 
 stmt: 

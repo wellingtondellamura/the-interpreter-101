@@ -185,6 +185,20 @@ public partial class LangBaseListener : ILangListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitLineIf([NotNull] LangParser.LineIfContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by the <c>lineFuncInvoc</c>
+	/// labeled alternative in <see cref="LangParser.line"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterLineFuncInvoc([NotNull] LangParser.LineFuncInvocContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>lineFuncInvoc</c>
+	/// labeled alternative in <see cref="LangParser.line"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitLineFuncInvoc([NotNull] LangParser.LineFuncInvocContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by the <c>lineEOL</c>
 	/// labeled alternative in <see cref="LangParser.line"/>.
 	/// <para>The default implementation does nothing.</para>
@@ -198,6 +212,20 @@ public partial class LangBaseListener : ILangListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitLineEOL([NotNull] LangParser.LineEOLContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by the <c>funcInvocLine</c>
+	/// labeled alternative in <see cref="LangParser.funcInvoc"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterFuncInvocLine([NotNull] LangParser.FuncInvocLineContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>funcInvocLine</c>
+	/// labeled alternative in <see cref="LangParser.funcInvoc"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitFuncInvocLine([NotNull] LangParser.FuncInvocLineContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>stmtAtrib</c>
 	/// labeled alternative in <see cref="LangParser.stmt"/>.

@@ -158,6 +158,18 @@ public interface ILangListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitLineIf([NotNull] LangParser.LineIfContext context);
 	/// <summary>
+	/// Enter a parse tree produced by the <c>lineFuncInvoc</c>
+	/// labeled alternative in <see cref="LangParser.line"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterLineFuncInvoc([NotNull] LangParser.LineFuncInvocContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>lineFuncInvoc</c>
+	/// labeled alternative in <see cref="LangParser.line"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitLineFuncInvoc([NotNull] LangParser.LineFuncInvocContext context);
+	/// <summary>
 	/// Enter a parse tree produced by the <c>lineEOL</c>
 	/// labeled alternative in <see cref="LangParser.line"/>.
 	/// </summary>
@@ -169,6 +181,18 @@ public interface ILangListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitLineEOL([NotNull] LangParser.LineEOLContext context);
+	/// <summary>
+	/// Enter a parse tree produced by the <c>funcInvocLine</c>
+	/// labeled alternative in <see cref="LangParser.funcInvoc"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterFuncInvocLine([NotNull] LangParser.FuncInvocLineContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>funcInvocLine</c>
+	/// labeled alternative in <see cref="LangParser.funcInvoc"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitFuncInvocLine([NotNull] LangParser.FuncInvocLineContext context);
 	/// <summary>
 	/// Enter a parse tree produced by the <c>stmtAtrib</c>
 	/// labeled alternative in <see cref="LangParser.stmt"/>.

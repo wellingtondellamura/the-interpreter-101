@@ -10,6 +10,13 @@ namespace Interpreter.Lang
 {
     public class LangInterpreter : LangBaseVisitor<object?>
     {
+        private Dictionary<string, IParseTree> _functions;
+
+        public LangInterpreter(Dictionary<string, IParseTree> functions)
+        {
+            this._functions = functions;
+        }
+
         public Dictionary<string, object?> Variables {get; protected set;} = new Dictionary<string, object?>();
 
         #region I/O Statements
@@ -187,6 +194,22 @@ namespace Interpreter.Lang
             object? v = Visit(context.cond());
             return v != null && !(bool)v;
         }
+        #endregion
+
+        #region Functions
+
+        public override object? VisitFuncInvocLine([NotNull] LangParser.FuncInvocLineContext context)
+        {
+            var funcName = context.VAR().GetText();
+            var function = _functions[funcName];
+
+            if (function != null){
+                return Visit(function);
+            }
+
+            return null;
+        }
+
         #endregion
 
     }

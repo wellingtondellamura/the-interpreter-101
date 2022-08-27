@@ -2,25 +2,28 @@ function soma(x,y){
     return x+y;
 }
 
-function soma(x,y,z){
-    return x+y+z;
-}
-
-
 function hello(){
     write "Hello World";
 }
 
-write "Informe x: ";
-read x;
-write "Informe y: ";
-read y;
-a = x + y;
-write "A soma de x e y é: ";
-write a;
-write b;
-if (x > y) then {
-    write "X é maior";
-} else {
-    write "Y é maior";
-}
+//write "Informe x: ";
+//read x;
+//write "Informe y: ";
+//read y;
+//a = x + y;
+//write "A soma de x e y é: ";
+//write a;
+//write b;
+//if (x > y) then {
+//    write "X é maior";
+//} else {
+//    write "Y é maior";
+//}
+
+
+write "Chamada de função";
+hello();
+hello();
+hello();
+hello();
+write "Fim da chamada de função";
